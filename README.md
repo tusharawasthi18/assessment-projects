@@ -1,6 +1,13 @@
 # Assessment Projects
-This is the base repository for assessment projects, candidates can create a fork and submit their solutions via a pull-request. 
-Candidate can choose a project from the list below.
+This is the base repository for assessment projects. Candidates should follow these steps:
+
+**Getting Started:**
+1. **Fork this repository** to your own GitHub account
+2. **Wait for project assignment** - The interview manager will assign you a specific project from the list below
+3. **Develop your solution** in your forked repository
+4. During the **technical discussion**, we will review your code directly from your forked repository
+
+**Note:** Make sure your forked repository is public so we can access it during the technical review session.
 
 ## DO's
 - Document your code
