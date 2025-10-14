@@ -18,7 +18,16 @@ This is the base repository for assessment projects. Candidates should follow th
 - Security: Implement proper encryption and secure password handling
 
 ## Dont's 
-- 
+- Don't copy code directly from online sources or tutorials
+- Don't commit sensitive information (API keys, passwords, personal data)
+- Don't ignore error handling and edge cases
+- Don't skip code comments and documentation
+- Don't use deprecated libraries or outdated practices
+- Don't hardcode configuration values
+- Don't submit incomplete or non-functional code
+- Don't violate security best practices
+- Don't plagiarize from other candidates' solutions
+- Don't create pull requests on this repository - work only in your forked repository
 
 ---
 
