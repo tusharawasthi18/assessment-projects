@@ -35,3 +35,12 @@ Using any of below databases build an API to perform CURD operation.
 - One endpoint should combine results for 3 different services/ data sets and implemennts async/parallel processing.
 - [netflixdb](https://github.com/lerocha/netflixdb)
 - [sakila-sqlite3](https://github.com/bradleygrant/sakila-sqlite3)
+
+---
+## On-Demand Processor
+**Description**
+Develop a system that accepts jobs, and process them.
+- A job can have mnultiple tasks in it.
+- Live status of tasks and job, % completion should be available.
+- Configurable settings for number of parallel execution.
+- 
