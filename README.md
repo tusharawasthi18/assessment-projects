@@ -5,6 +5,10 @@ Candidate can choose a project from the list below.
 ## DO's
 - Document your code
 - Follow best practices
+**Technical Requirements:**
+- Language: Any (Python, Node.js, Go, Rust, etc.)
+- Storage: File-based (JSON, SQLite, or encrypted files)
+- Security: Implement proper encryption and secure password handling
 
 ## Dont's 
 - 
@@ -25,11 +29,6 @@ Create a terminal-based password manager application that helps users securely s
 **What is a Password Manager?**
 A password manager is a software application that stores and manages online credentials in an encrypted database. It helps users generate strong, unique passwords for different accounts and remembers them so users don't have to.
 
-**Reference Links (Read Before Starting):**
-1. [What is a Password Manager? - TechTarget](https://www.techtarget.com/searchsecurity/definition/password-manager)
-2. [What is a Password Manager? - McAfee](https://www.mcafee.com/learn/what-is-a-password-manager/)
-3. [How Do Password Managers Work? - Rippling](https://www.rippling.com/blog/how-do-password-managers-work)
-
 **Core Features to Implement:**
 - **Master Password Protection**: Secure the entire password vault with a master password
 - **Password Storage**: Store website URLs, usernames, and encrypted passwords
@@ -39,12 +38,6 @@ A password manager is a software application that stores and manages online cred
 - **Terminal Interface**: Command-line based interface for all operations
 - **Encryption**: All stored passwords must be encrypted (AES-256 recommended)
 - **Import/Export**: Basic functionality to backup and restore password data
-
-**Technical Requirements:**
-- Language: Any (Python, Node.js, Go, Rust, etc.)
-- Storage: File-based (JSON, SQLite, or encrypted files)
-- CLI Interface: Interactive command-line menu system
-- Security: Implement proper encryption and secure password handling
 
 ---
 ## CRUD API
