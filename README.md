@@ -17,7 +17,7 @@ This is the base repository for assessment projects. Candidates should follow th
 - Storage: File-based (JSON, SQLite, or encrypted files)
 - Security: Implement proper encryption and secure password handling
 
-## Dont's 
+## Dont's
 - Don't copy code directly from online sources or tutorials
 - Don't commit sensitive information (API keys, passwords, personal data)
 - Don't ignore error handling and edge cases
@@ -31,13 +31,13 @@ This is the base repository for assessment projects. Candidates should follow th
 
 ---
 
-# Projects 
+# Projects
 ## Authentication System
 **Description**
 Create an authentication system that handles at least 2 different types of authentication mechanisms.
 - Authentication server that supports atleast 2 different types of user authentication mechanism.
 
---- 
+---
 ## Password Manager
 **Description**
 Create a terminal-based password manager application that helps users securely store, generate, and manage their passwords. This project will help you understand cryptography, secure storage, and command-line interface development.
@@ -58,7 +58,7 @@ A password manager is a software application that stores and manages online cred
 ---
 ## CRUD API
 **Description**
-Using any of below databases build an API to perform CURD operation. 
+Using any of below databases build an API to perform CURD operation.
 - API's should support multiple formats of output & input
 - At least one endpoint should support streaming.
 - One endpoint should combine results for 3 different services/ data sets and implemennts async/parallel processing.
@@ -69,7 +69,9 @@ Using any of below databases build an API to perform CURD operation.
 ## On-Demand Processor
 **Description**
 Develop a system that accepts jobs, and process them.
-- A job can have mnultiple tasks in it.
+- A job can have multiple tasks in it.
 - Live status of tasks and job, % completion should be available.
 - Configurable settings for number of parallel execution.
-- 
+- API endpoint to submit jobs
+- Basic persistence (JSON or SQLite)
+- Graceful shutdown handling
