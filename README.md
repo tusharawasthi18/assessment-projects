@@ -1,77 +1,112 @@
-# Assessment Projects
-This is the base repository for assessment projects. Candidates should follow these steps:
+# On-Demand Processor
 
-**Getting Started:**
-1. **Fork this repository** to your own GitHub account
-2. **Wait for project assignment** - The interview manager will assign you a specific project from the list below
-3. **Develop your solution** in your forked repository
-4. During the **technical discussion**, we will review your code directly from your forked repository
+A system that accepts jobs and processes them in parallel, with live status updates.
 
-**Note:** Make sure your forked repository is public so we can access it during the technical review session.
+## Description
 
-## DO's
-- Document your code
-- Follow best practices
-**Technical Requirements:**
-- Language: Any (Python, Node.js, Go, Rust, etc.)
-- Storage: File-based (JSON, SQLite, or encrypted files)
-- Security: Implement proper encryption and secure password handling
+This project is a simple yet powerful on-demand processing system built with Node.js. It allows you to submit jobs, each containing multiple tasks. The system processes these tasks in parallel, provides live status updates via WebSockets, and persists job data. It also includes graceful shutdown handling to ensure no data is lost.
 
-## Dont's
-- Don't copy code directly from online sources or tutorials
-- Don't commit sensitive information (API keys, passwords, personal data)
-- Don't ignore error handling and edge cases
-- Don't skip code comments and documentation
-- Don't use deprecated libraries or outdated practices
-- Don't hardcode configuration values
-- Don't submit incomplete or non-functional code
-- Don't violate security best practices
-- Don't plagiarize from other candidates' solutions
-- Don't create pull requests on this repository - work only in your forked repository
+## Features
 
----
+- **Job and Task Management**: Submit jobs with multiple tasks.
+- **Live Status Updates**: Real-time progress of jobs and tasks, including percentage completion, broadcasted via WebSockets.
+- **Configurable Parallelism**: Easily configure the number of tasks to execute in parallel.
+- **API Endpoint**: A simple RESTful API to submit new jobs.
+- **Persistence**: Job and task data are persisted to a JSON file for durability.
+- **Graceful Shutdown**: Handles process termination signals to safely stop the system.
 
-# Projects
-## Authentication System
-**Description**
-Create an authentication system that handles at least 2 different types of authentication mechanisms.
-- Authentication server that supports atleast 2 different types of user authentication mechanism.
+## Getting Started
 
----
-## Password Manager
-**Description**
-Create a terminal-based password manager application that helps users securely store, generate, and manage their passwords. This project will help you understand cryptography, secure storage, and command-line interface development.
+### Prerequisites
 
-**What is a Password Manager?**
-A password manager is a software application that stores and manages online credentials in an encrypted database. It helps users generate strong, unique passwords for different accounts and remembers them so users don't have to.
+- Node.js (v14 or later)
+- npm
 
-**Core Features to Implement:**
-- **Master Password Protection**: Secure the entire password vault with a master password
-- **Password Storage**: Store website URLs, usernames, and encrypted passwords
-- **Strong Password Generation**: Generate cryptographically secure passwords with customizable length and character sets
-- **Password Rotation**: Allow users to update/rotate existing passwords
-- **Search & Retrieve**: Find and display stored credentials
-- **Terminal Interface**: Command-line based interface for all operations
-- **Encryption**: All stored passwords must be encrypted (AES-256 recommended)
-- **Import/Export**: Basic functionality to backup and restore password data
+### Installation
 
----
-## CRUD API
-**Description**
-Using any of below databases build an API to perform CURD operation.
-- API's should support multiple formats of output & input
-- At least one endpoint should support streaming.
-- One endpoint should combine results for 3 different services/ data sets and implemennts async/parallel processing.
-- [netflixdb](https://github.com/lerocha/netflixdb)
-- [sakila-sqlite3](https://github.com/bradleygrant/sakila-sqlite3)
+1.  Clone the repository:
 
----
-## On-Demand Processor
-**Description**
-Develop a system that accepts jobs, and process them.
-- A job can have multiple tasks in it.
-- Live status of tasks and job, % completion should be available.
-- Configurable settings for number of parallel execution.
-- API endpoint to submit jobs
-- Basic persistence (JSON or SQLite)
-- Graceful shutdown handling
+    ```bash
+    git clone https://github.com/tusharawasthi18/cloudamize-assessment-project.git
+    cd cloudamize-assessment-project
+    ```
+
+2.  Install the dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running the Application
+
+To start the server, run the following command:
+
+```bash
+npm start
+```
+
+The server will start on `http://localhost:3000`.
+
+## API Endpoints
+
+### Submit a Job
+
+- **URL**: `/jobs`
+- **Method**: `POST`
+- **Body**:
+  ```json
+  {
+    "numTask": 20
+  }
+  ```
+- **Success Response**:
+  - **Code**: `201`
+  - **Content**:
+    ```json
+    {
+      "success": true,
+      "jobId": "some-unique-id"
+    }
+    ```
+
+## WebSocket Events
+
+The server broadcasts job and task status updates to all connected clients. Connect to the WebSocket server at `ws://localhost:3000`.
+
+### Events
+
+- `job-update`: Sent when a job's status changes.
+  ```json
+  {
+    "jobId": "some-unique-id",
+    "status": "processing",
+    "progress": 50
+  }
+  ```
+- `task-update`: Sent when a task's status changes.
+  ```json
+  {
+    "jobId": "some-unique-id",
+    "taskId": "task-id-1",
+    "status": "completed"
+  }
+  ```
+
+## Configuration
+
+The number of parallel task executions can be configured by setting the `MAX_CONCURRENT_TASKS` environment variable.
+
+Example:
+
+```bash
+MAX_CONCURRENT_TASKS=5 npm start
+```
+
+If not set, it defaults to a value defined in the application (e.g., number of CPU cores).
+
+## Persistence
+
+The application persists job and task data to a `jobs.json` file in the project's root directory. This ensures that data is not lost between application restarts.
+
+## Graceful Shutdown
+
+The system listens for `SIGTERM` and `SIGINT` signals to perform a graceful shutdown. During this process, all job and task states are saved to the database (`jobs.json`). When the server restarts, it automatically resumes any jobs that were queued or pending, ensuring no work is lost. This involves stopping the acceptance of new jobs, waiting for ongoing tasks to complete, saving the state, and then exiting the process.

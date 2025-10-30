@@ -1,0 +1,3 @@
+node_modules
+# Ignore jobs.json to prevent sensitive data from being committed
+jobs.json
