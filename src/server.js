@@ -10,6 +10,7 @@ const io = new Server(server, { cors: { origin: "*" } });
 
 // configurable task count
 const maxTasks = process.env.MAX_CONCURRENT_TASKS || 3;
+console.log("Max concurrent tasks configured: ", maxTasks);
 
 const processor = OnDemandProcessor.getInstance(maxTasks);
 processor.init(io);
